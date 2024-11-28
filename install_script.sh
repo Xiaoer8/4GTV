@@ -15,8 +15,8 @@ NC='\033[0m' # No Color
 VERSION="1.0"
 
 # 作者信息
-AUTHOR="hiyuelin"
-TELEGRAM="https://t.me/hiyuelin"
+AUTHOR="4gtv"
+TELEGRAM="https://t.me/4gtv-"
 
 # 函数定义
 print_logo() {
