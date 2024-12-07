@@ -16,7 +16,7 @@ VERSION="1.0"
 
 # 作者信息
 AUTHOR="4gtv"
-TELEGRAM="https://t.me/4gtv-"
+TELEGRAM="https://4gtv-"
 
 # 函数定义
 print_logo() {
@@ -41,14 +41,6 @@ print_menu() {
     print_logo
     echo -e "${PURPLE}=== 程序安装菜单 ===${NC}"
     echo -e "${BLUE}1)${NC} Docker 管理"
-    echo -e "${BLUE}2)${NC} X-UI"
-    echo -e "${BLUE}3)${NC} 3X-UI"
-    echo -e "${BLUE}4)${NC} BBR加速"
-    echo -e "${BLUE}5)${NC} 哪吒监控"
-    echo -e "${BLUE}6)${NC} aaPanel"
-    echo -e "${BLUE}7)${NC} IP质量体检"
-    echo -e "${BLUE}8)${NC} frp内网穿透"
-    echo -e "${BLUE}9)${NC} 检查Netflix解锁"
     echo -e "${BLUE}10)${NC} 查看本机IP信息"
     echo -e "${RED}0)${NC} 退出"
     echo
@@ -187,50 +179,6 @@ install_docker_compose() {
     read -p "按回车键继续..."
 }
 
-install_xui() {
-    echo -e "${GREEN}开始安装 X-UI...${NC}"
-    echo -e "${YELLOW}警告：此操作将直接从网下载并执行脚本。请确保您信任该脚本的来源。${NC}"
-    bash <(curl -Ls https://raw.githubusercontent.com/vaxilu/x-ui/master/install.sh)
-    echo -e "${GREEN}X-UI 安装脚本执行完成${NC}"
-    read -p "按回车键继续..."
-}
-
-install_3xui() {
-    echo -e "${GREEN}开始安装 3X-UI...${NC}"
-    echo -e "${YELLOW}警告：此操作将直接从网络下载执行脚本。请确保您信任该脚本的来源。${NC}"
-    bash <(curl -Ls https://raw.githubusercontent.com/mhsanaei/3x-ui/master/install.sh)
-    echo -e "${GREEN}3X-UI 安装脚本执行完成${NC}"
-    read -p "按回车键继续..."
-}
-
-install_bbr() {
-    echo -e "${GREEN}开始安装 BBR 加速...${NC}"
-    echo -e "${YELLOW}警告：此操作将直接从网络下载并执行脚本。请确保您信任该脚本的来源。${NC}"
-    wget -N --no-check-certificate "https://raw.githubusercontent.com/chiakge/Linux-NetSpeed/master/tcp.sh"
-    chmod +x tcp.sh
-    ./tcp.sh
-    echo -e "${GREEN}BBR 加速安装脚本执行完成${NC}"
-    read -p "按回车键继续..."
-}
-
-install_nezha() {
-    echo -e "${GREEN}开始安装哪吒监控...${NC}"
-    echo -e "${YELLOW}警告：此操作将直接从网络下载并执行脚本。请确保您信任该脚本的来源。${NC}"
-    curl -L https://raw.githubusercontent.com/naiba/nezha/master/script/install.sh -o nezha.sh
-    chmod +x nezha.sh
-    sudo ./nezha.sh
-    echo -e "${GREEN}哪吒监控安装脚本执行完成${NC}"
-    read -p "按回车键继续..."
-}
-
-install_aapanel() {
-    echo -e "${GREEN}开始装 aaPanel...${NC}"
-    echo -e "${YELLOW}警告：此操作将直接从网络下并执行脚本。请确保您信任该脚本的来源。${NC}"
-    wget -O install.sh http://www.aapanel.com/script/install-ubuntu_6.0_en.sh
-    bash install.sh aapanel
-    echo -e "${GREEN}aaPanel 安装脚本执行完成${NC}"
-    read -p "按回车键继续..."
-}
 
 install_ip_check() {
     echo -e "${GREEN}开始执行 IP 质量体检...${NC}"
@@ -240,38 +188,6 @@ install_ip_check() {
     read -p "按回车键继续..."
 }
 
-install_frp() {
-    echo -e "${GREEN}开始安装 frp 内网穿透...${NC}"
-    echo -e "${YELLOW}警告：此操作直接从网络下载并执行脚本。请确保您信任该脚本的来源。${NC}"
-    echo "请选择安装源："
-    echo "1) Gitee"
-    echo "2) Github"
-    read -p "请输入选项数字: " frp_choice
-    case $frp_choice in
-        1)
-            wget https://gitee.com/mvscode/frps-onekey/raw/master/install-frps.sh -O ./install-frps.sh
-            ;;
-        2)
-            wget https://raw.githubusercontent.com/mvscode/frps-onekey/master/install-frps.sh -O ./install-frps.sh
-            ;;
-        *)
-            echo -e "${RED}无效选项，取消安装。${NC}"
-            return
-            ;;
-    esac
-    chmod 700 ./install-frps.sh
-    ./install-frps.sh install
-    echo -e "${GREEN}frp 内网穿透安装完成${NC}"
-    read -p "按回车键继续..."
-}
-
-install_netflix_check() {
-    echo -e "${GREEN}开始检查Netflix解锁...${NC}"
-    echo -e "${YELLOW}警告：此操作将直接从网络下载并执行脚本。请确保您信任该脚本的来源。${NC}"
-    wget -O nf https://github.com/sjlleo/netflix-verify/releases/download/2.01/nf_2.01_linux_amd64 && chmod +x nf && clear && ./nf
-    echo -e "${GREEN}Netflix解锁检查执行完成${NC}"
-    read -p "按回车键继续..."
-}
 
 deploy_pixman() {
     echo -e "${GREEN}开始部署 Pixman 应用...${NC}"
